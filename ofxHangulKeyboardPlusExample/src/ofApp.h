@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxTrueTypeFontUC.h"
-#include "ofxSoftHangulKeyboard.h"
+#include "ofxTrueTypeFontUC.h"
+#include "ofxHangulKeyboardPlus.h"
 
 class ofApp : public ofBaseApp{
 public:
@@ -23,10 +23,12 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	ofxSoftHangulKeyboard *keyboard;
 	
-	ofxTrueTypeFontUC *textFont;
+	ofxTrueTypeFontUC	*textFont;
 	string stringBox;
 	string debugMessage;
 
+	bool isHangulInputMode;
+	float lastKeyComboCheckTimer;
+	
 };

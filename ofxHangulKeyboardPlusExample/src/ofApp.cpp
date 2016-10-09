@@ -9,37 +9,46 @@ void ofApp::setup(){
 	textFont = new ofxTrueTypeFontUC();
 	textFont->loadFont("AppleSDGothicNeo-Regular.otf", 30, true, true);
 	
-	keyboard = new ofxSoftHangulKeyboard();
-	keyboard->setup(this, OFXSK_LAYOUT_KEYBOARD_FULL_EN);
+	
+	lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	stringBox = keyboard->getBuffer();
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofBackground(0);
-	keyboard->draw(100, 350);
+//	if(isHangulInputMode) {
+	
+//	}
 
 	ofSetHexColor(0xFFFFFF);
 	ofFill();
+	
 	textFont->drawStringAsShapes(stringBox, 50, 120);
 }
 
 
 void ofApp::exit(){
 	delete textFont;
-	delete keyboard;
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	keyboard->keyInput(key);
+	if(key == OF_KEY_F12){
+		if(ofGetElapsedTimeMillis() - lastKeyComboCheckTimer > 50){
+
+			// 키보드 교체
+//			toggleInputLanguage();
+			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
+		}
+	}
 	
-	if(keyboard->getLangState() == OFXSK_LAYOUT_KEYBOARD_FULL_EN)	debugMessage = "[KO] key : " + to_string(char(key)) + " >> keyCode is : " + to_string(keyboard->getHangulMapCode());
-	else															debugMessage = "[EN]";
+	
+	
 }
 
 //--------------------------------------------------------------
