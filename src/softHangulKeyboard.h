@@ -17,8 +17,8 @@
 #include "ofxSoftKey.h"
 #include "HangulAutomata.h"
 
-#define OFXSK_LAYOUT_KEYBOARD_FULL_EN 1
-#define OFXSK_LAYOUT_KEYBOARD_FULL_KR 2
+#define OFXVHK_LAYOUT_EN 1
+#define OFXVHK_LAYOUT_KR 2
 
 class ofApp;
 class softHangulKeyboard   {

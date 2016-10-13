@@ -46,16 +46,16 @@ void softHangulKeyboard::setup( ofBaseApp* _ofApp, int layout ) {
 }
 
 void softHangulKeyboard::activate(){
-	if(getLangState() == OFXSK_LAYOUT_KEYBOARD_FULL_EN)		cout << "EN KEYBOARD DEACTIVATED" << endl;
-	else														cout << "KR kEYBOARD DEACTIVATED" << endl;
+	if(getLangState() == OFXVHK_LAYOUT_EN)		cout << "EN KEYBOARD DEACTIVATED" << endl;
+	else										cout << "KR kEYBOARD DEACTIVATED" << endl;
 	
 	isActivated = true;
 	
 }
 
 void softHangulKeyboard::deActivate(){
-	if(getLangState() == OFXSK_LAYOUT_KEYBOARD_FULL_EN)		cout << "EN KEYBOARD ACTIVATED" << endl;
-	else														cout << "KR kEYBOARD ACTIVATED" << endl;
+	if(getLangState() == OFXVHK_LAYOUT_EN)		cout << "EN KEYBOARD ACTIVATED" << endl;
+	else										cout << "KR kEYBOARD ACTIVATED" << endl;
 	
 	isActivated = false;
 }
@@ -67,7 +67,7 @@ void softHangulKeyboard::setLayout(int layout) {
 	
 	switch(layout) {
 			
-		case OFXSK_LAYOUT_KEYBOARD_FULL_EN:
+		case OFXVHK_LAYOUT_EN:
 			addKey('`', "`"); addKey('1', "1"); addKey('2', "2"); addKey('3', "3"); addKey('4', "4"); addKey('5', "5"); addKey('6', "6"); addKey('7', "7"); addKey('8', "8"); addKey('9', "9"); addKey('0', "0"); addKey('-', "-"); addKey('=', "="); addKey(OFXSK_KEY_DELETE, "delete"); newRow();
 			addKey(OFXSK_KEY_TAB, "tab"); addKey('q', "q"); addKey('w', "w"); addKey('e', "e"); addKey('r', "r"); addKey('t', "t"); addKey('y', "y"); addKey('u', "u"); addKey('i', "i"); addKey('o', "o"); addKey('p', "p"); addKey('[', "["); addKey(']', "]"); addKey('\\', "\\"); newRow();
 			addKey(OFXSK_KEY_CAPS, "capslock"); addKey('a', "a"); addKey('s', "s"); addKey('d', "d"); addKey('f', "f"); addKey('g', "g"); addKey('h', "h"); addKey('j', "j"); addKey('k', "k"); addKey('l', "l"); addKey(';', ";"); addKey('\'', "\'"); addKey(OFXSK_KEY_RETURN, "return"); newRow();
@@ -75,7 +75,7 @@ void softHangulKeyboard::setLayout(int layout) {
 			addKey(' ', " ").padLeft(200).setSize(300, 40), addKey(OFXSK_KEY_LANG, "KR/EN").setSize(65, 40);
 			break;
 			
-		case OFXSK_LAYOUT_KEYBOARD_FULL_KR:
+		case OFXVHK_LAYOUT_KR:
 			addKey('`', "`"); addKey('1', "1"); addKey('2', "2"); addKey('3', "3"); addKey('4', "4"); addKey('5', "5"); addKey('6', "6"); addKey('7', "7"); addKey('8', "8"); addKey('9', "9"); addKey('0', "0"); addKey('-', "-"); addKey('=', "="); addKey(OFXSK_KEY_DELETE, "delete"); newRow();
 			addKey(OFXSK_KEY_TAB, "tab"); addKey('q', "ㅂ"); addKey('w', "ㅈ"); addKey('e', "ㄷ"); addKey('r', "ㄱ"); addKey('t', "ㅅ"); addKey('y', "ㅛ"); addKey('u', "ㅕ"); addKey('i', "ㅑ"); addKey('o', "ㅐ"); addKey('p', "ㅔ"); addKey('[', "["); addKey(']', "]"); addKey('\\', "\\"); newRow();
 			addKey(OFXSK_KEY_CAPS, "caps"); addKey('a', "ㅁ"); addKey('s', "ㄴ"); addKey('d', "ㅇ"); addKey('f', "ㄹ"); addKey('g', "ㅎ"); addKey('h', "ㅗ"); addKey('j', "ㅓ"); addKey('k', "ㅏ"); addKey('l', "ㅣ"); addKey(';', ";"); addKey('\'', "\'"); addKey(OFXSK_KEY_RETURN, "return"); newRow();
@@ -265,7 +265,7 @@ void softHangulKeyboard::keyInput(int key) {
 				break;
 			default:
 				if(isActivated){
-					if(getLangState() == OFXSK_LAYOUT_KEYBOARD_FULL_EN){	// english
+					if(getLangState() == OFXVHK_LAYOUT_EN){	// english
 						automata.pushASCII(key);
 					} else {
 						// ÌÖåÏù¥Î∏îÏóêÏÑú ÌÇ§Î•º Ï∞æÏïÑÏÑú Ìï¥Îãπ ÏΩîÎìúÎ•º Î¶¨ÌÑ¥ÌïúÎã§..
@@ -300,9 +300,11 @@ void softHangulKeyboard::newRow() {
 }
 
 void softHangulKeyboard::toggleInputLanguage(){
-//	if(inputLangState == OFXSK_LAYOUT_KEYBOARD_FULL_EN)		inputLangState = OFXSK_LAYOUT_KEYBOARD_FULL_KR;
-//	else														inputLangState = OFXSK_LAYOUT_KEYBOARD_FULL_EN;
+//	if(inputLangState == OFXVHK_LAYOUT_EN)		inputLangState = OFXVHK_LAYOUT_KR;
+//	else														inputLangState = OFXVHK_LAYOUT_EN;
 	isActivated = !isActivated;
+	if(inputLangState == OFXVHK_LAYOUT_EN)  cout << "EN is activated" << endl;
+	else									cout << "EN is activated" << endl;
 }
 
 //--------------------------------------------------------------
