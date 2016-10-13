@@ -13,8 +13,9 @@ ofxHangulKeyboardPlus::ofxHangulKeyboardPlus(){
 	engKeyboard = new softHangulKeyboard();
 	
 	hangulKeyboard->activate();
-	engKeyboard->deActivate();
-
+//	engKeyboard->deActivate();
+	
+	position = ofVec2f(100, 350);
 }
 
 ofxHangulKeyboardPlus::~ofxHangulKeyboardPlus(){
@@ -25,8 +26,8 @@ ofxHangulKeyboardPlus::~ofxHangulKeyboardPlus(){
 
 void ofxHangulKeyboardPlus::setup(ofBaseApp *_ofApp, bool hangulMode){
 	ofApp = _ofApp;
-	hangulKeyboard->setup(ofApp, OFXSK_LAYOUT_KEYBOARD_FULL_KR);
-	engKeyboard->setup(ofApp, OFXSK_LAYOUT_KEYBOARD_FULL_EN);
+	hangulKeyboard->setup(ofApp, OFXVHK_LAYOUT_KR);
+	engKeyboard->setup(ofApp, OFXVHK_LAYOUT_EN);
 	
 	if(hangulMode)	isHangulMode = true;
 	else			isHangulMode = false;
@@ -43,8 +44,8 @@ void ofxHangulKeyboardPlus::update(){
 }
 
 void ofxHangulKeyboardPlus::draw(){
-	if(hangulKeyboard->isGetActivated())	hangulKeyboard->draw(100, 350);
-	if(engKeyboard->isGetActivated())		engKeyboard->draw(100, 350);
+	if(hangulKeyboard->isGetActivated())	hangulKeyboard->draw(position);
+	if(engKeyboard->isGetActivated())		engKeyboard->draw(position);
 }
 
 void ofxHangulKeyboardPlus::toggleKeyboard(){
@@ -61,4 +62,8 @@ string ofxHangulKeyboardPlus::getBuffer(){
 void ofxHangulKeyboardPlus::clearBuffer(){
 	// 버퍼 삭제
 	mergedBuffer.clear();
+}
+
+bool ofxHangulKeyboardPlus::getInputMode(){
+	return isHangulMode;
 }

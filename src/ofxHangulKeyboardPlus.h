@@ -23,6 +23,7 @@ public:
 	void toggleKeyboard();
 	string getBuffer();
 	void clearBuffer();
+	bool getInputMode();
 	
 protected:
 	ofBaseApp	*ofApp;
@@ -35,7 +36,7 @@ protected:
 	softHangulKeyboard *hangulKeyboard;
 	softHangulKeyboard *engKeyboard;
 	
-	ofVec2f positiion;
+	ofVec2f position;
 	float lastKeyComboCheckTimer;
 };
 
