@@ -34,6 +34,10 @@ void ofxHangulKeyboardPlus::setup(ofBaseApp *_ofApp, bool hangulMode){
 }
 
 void ofxHangulKeyboardPlus::sendKey(int _key){
+	if(_key == OF_KEY_BACKSPACE){			// if backspace key is pressed, remove end of char from mergedBuffer
+		if(mergedBuffer.length() > 0)	mergedBuffer.pop_back();
+	}
+	
 	hangulKeyboard->keyInput(_key);
 	engKeyboard->keyInput(_key);
 }
