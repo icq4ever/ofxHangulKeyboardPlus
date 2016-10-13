@@ -24,6 +24,7 @@ public:
 	void gotMessage(ofMessage msg);
 
 	
+	ofxHangulKeyboardPlus *keyboard;
 	ofxTrueTypeFontUC	*textFont;
 	string stringBox;
 	string debugMessage;

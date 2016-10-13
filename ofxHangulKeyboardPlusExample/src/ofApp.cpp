@@ -11,6 +11,10 @@ void ofApp::setup(){
 	
 	
 	lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
+	
+	keyboard = new ofxHangulKeyboardPlus();
+	keyboard->setup(this, true);
+	isHangulInputMode = keyboard->getInputMode();
 }
 
 //--------------------------------------------------------------
@@ -21,9 +25,10 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofBackground(0);
-//	if(isHangulInputMode) {
+
+	// draw keyboard
+	keyboard->draw();
 	
-//	}
 
 	ofSetHexColor(0xFFFFFF);
 	ofFill();
@@ -40,10 +45,13 @@ void ofApp::exit(){
 void ofApp::keyPressed(int key){
 	if(key == OF_KEY_F12){
 		if(ofGetElapsedTimeMillis() - lastKeyComboCheckTimer > 50){
-
+			
+			// toggle lang mode
+			keyboard->toggleKeyboard();
+			
 			// 키보드 교체
-//			toggleInputLanguage();
-			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
+			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();		// prevent change too fast
+			isHangulInputMode =  keyboard->getInputMode();
 		}
 	}
 	
