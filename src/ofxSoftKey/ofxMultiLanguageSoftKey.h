@@ -40,6 +40,7 @@ public:
 	bool isActivated;
 	int* padding;
 	
+	// 영문, 한글 키보드 라벨을 동시에 추가한다.
 	ofxMultiLanguageSoftKey(int key, string _enLabel, string _krLabel, ofBaseApp* ofApp);
 	~ofxMultiLanguageSoftKey();
 

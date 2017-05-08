@@ -18,14 +18,12 @@ ofxHangulKeyboardPlus::~ofxHangulKeyboardPlus(){
 	delete keyboard;
 }
 
-void ofxHangulKeyboardPlus::setup(ofBaseApp* _ofApp, bool hangulMode){
+void ofxHangulKeyboardPlus::setup(ofBaseApp* _ofApp, int inputLang){
 	ofApp = _ofApp;
-	keyboard->setup(ofApp, OFXVHK_LAYOUT_KR);
+	inputMethod = inputLang;
+	keyboard->setup(ofApp, inputLang);
 	
-	if(hangulMode)	{
-		isHangulMode = true;
-		keyboard->activate();
-	}
+	keyboard->activate();
 }
 
 void ofxHangulKeyboardPlus::setPosition(ofVec2f pos){
@@ -33,15 +31,8 @@ void ofxHangulKeyboardPlus::setPosition(ofVec2f pos){
 }
 
 void ofxHangulKeyboardPlus::sendKey(int _key){
-	if(_key == OF_KEY_BACKSPACE){			// if backspace key is pressed, remove end of char from mergedBuffer
-		if(mergedBuffer.length() > 0)			mergedBuffer.pop_back();
-	} else {
-		
-			keyboard->keyInput(_key);
-			mergedBuffer = keyboard->getBuffer();	// --> error occured
-			keyboard->clearBuffer();
-	}
-
+		keyboard->keyInput(_key);
+		mergedBuffer = keyboard->getBuffer();
 }
 
 void ofxHangulKeyboardPlus::draw(){
@@ -50,7 +41,7 @@ void ofxHangulKeyboardPlus::draw(){
 
 void ofxHangulKeyboardPlus::toggleKeyboard(){
 	keyboard->toggleInputLanguage();
-	isHangulMode = !isHangulMode;
+	inputMethod = (inputMethod+1)%2;
 }
 
 string ofxHangulKeyboardPlus::getBuffer(){
@@ -61,6 +52,6 @@ void ofxHangulKeyboardPlus::clearBuffer(){
 	mergedBuffer.clear();
 }
 
-bool ofxHangulKeyboardPlus::getInputMode(){
-	return isHangulMode;
+int ofxHangulKeyboardPlus::getInputMethod(){
+	return inputMethod;
 }

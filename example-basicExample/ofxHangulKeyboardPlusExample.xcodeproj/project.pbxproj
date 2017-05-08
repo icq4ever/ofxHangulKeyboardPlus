@@ -52,7 +52,7 @@
 		1E0BA0055D122E7715B2213A /* softHangulKeyboard.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = softHangulKeyboard.cpp; path = ../src/softHangulKeyboard.cpp; sourceTree = SOURCE_ROOT; };
 		22FDF81C4A468B788F424022 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTrueTypeFontUC.h; path = ../../../addons/ofxTrueTypeFontUC/src/ofxTrueTypeFontUC.h; sourceTree = SOURCE_ROOT; };
 		43B2FDAED735D73FF734F634 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTrueTypeFontUC.cpp; path = ../../../addons/ofxTrueTypeFontUC/src/ofxTrueTypeFontUC.cpp; sourceTree = SOURCE_ROOT; };
-		5591ECABD1F42E0700F07BCA /* ofxMultiLanguageSoftKey.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMultiLanguageSoftKey.h; path = ../src/ofxSoftKey/ofxMultiLanguageSoftKey.h; sourceTree = SOURCE_ROOT; };
+		5591ECABD1F42E0700F07BCA /* ofxMultiLanguageSoftKey.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMultiLanguageSoftKey.h; path = ../src/ofxSoftKey/ofxMultiLanguageSoftKey.h; sourceTree = SOURCE_ROOT; };
 		5F3E7BBF1BF700FE7E2FCE9D /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMSAInteractiveObject.h; path = ../../../addons/ofxHangulKeyboardPlus/src/ofxMSAInteractiveObject/ofxMSAInteractiveObject.h; sourceTree = SOURCE_ROOT; };
 		7FB5BB92E975327BBD2E9DF1 /* HangulAutomata.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = HangulAutomata.cpp; path = ../../../addons/ofxHangulKeyboardPlus/src/HangulAutomata/HangulAutomata.cpp; sourceTree = SOURCE_ROOT; };
 		9323AB58596A7B22BDA8EDF5 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMSAInteractiveObject.cpp; path = ../../../addons/ofxHangulKeyboardPlus/src/ofxMSAInteractiveObject/ofxMSAInteractiveObject.cpp; sourceTree = SOURCE_ROOT; };
@@ -95,10 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				F471AC018FAB6AE98C280103 /* HangulAutomata */,
+				FA0B2EFCFB3B7247E001738C /* ofxMultiLanguageSoftKey */,
 				7A26FD8ADA20C89A15509206 /* ofxMSAInteractiveObject */,
 				1E0BA0055D122E7715B2213A /* softHangulKeyboard.cpp */,
 				022C433456C6CAA34AC04A0E /* softHangulKeyboard.h */,
-				FA0B2EFCFB3B7247E001738C /* ofxMultiLanguageSoftKey */,
 			);
 			name = src;
 			sourceTree = "<group>";

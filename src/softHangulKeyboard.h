@@ -34,7 +34,7 @@ public:
 	void draw(float x, float y);
 	void draw();
 
-	//	ofxMultiLanguageSoftKey& addKey(int c);
+	// 소프트키
 	ofxMultiLanguageSoftKey& addKey(int c, string enLabel, string krLabel);
 	void newRow();
 
@@ -65,7 +65,6 @@ public:
 	void clearBuffer();
 	void popFromBufferEnd();
 	
-//	bool shiftOn;
 	
 protected:
 	ofBaseApp* ofapp;
@@ -76,10 +75,9 @@ protected:
 	int hangulMapCode;
 	wchar_t completedWord;
 	wstring m_wstrText = L"";
-//	string m_strText = "";
 	string stringBuffer = "";
 	
-	// √è√≤√Ö√é¬®‚àè-√å√Ø√∫√ç‚àè√Ñ √é√ü¬ß√å√Ø√´ √å√ñ√•√è√π¬•√é‚àè√Æ
+	// 한글 키코드 테이블.
 	map<char, int> m_HangulKeyTable;
 	int inputLangState;
 	int lastKeyComboCheckTimer;

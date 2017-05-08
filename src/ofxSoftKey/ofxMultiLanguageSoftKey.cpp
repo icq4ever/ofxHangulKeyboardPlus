@@ -64,14 +64,13 @@
 //}
 
 
-// initialize with keyCode, label
+// initialize with keyCode, en/kr label
 ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, string _krLabel, ofBaseApp* _ofApp) {
 	enLabel = new string();
 	krLabel = new string();
 	labelFont = new ofxTrueTypeFontUC();
 	labelFont->loadFont("AppleSDGothicNeo-Regular.otf", 12, true, true);
 
-//	keyboard = _keyboard;
 	ofapp = _ofApp;
 	key = _key;
 	roundness = 0;
@@ -118,7 +117,6 @@ ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, stri
 		default:
 			enLabel->assign(_enLabel);
 			krLabel->assign(_krLabel);
-//			hangulLabel = string(1, key)
 			setSize(40, 40);
 			break;
 	}
@@ -180,8 +178,6 @@ void ofxMultiLanguageSoftKey::draw(int _langState) {
 		else									labelFont->drawString(*krLabel, x+10, y+height-10);
 	}
 	ofPopStyle();
-//	ofDrawBitmapString(label, x+10, y+height-10);
-
 }
 
 
@@ -238,10 +234,8 @@ ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setRoundness(float r) {
 
 //--------------------------------------------------------------
 void ofxMultiLanguageSoftKey::onPress(int x, int y, int button) {
-//	cout << "onPress" << " " << ofGetFrameNum() << endl;
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
-			
 			break;
 		case OFXSK_KEY_TAB: 
 			ofapp->keyPressed(OF_KEY_TAB);
@@ -263,14 +257,12 @@ void ofxMultiLanguageSoftKey::onPress(int x, int y, int button) {
 			ofapp->keyPressed((int)key);
 			break;
 	}
-	//ofNotifyEvent(ofEvents.keyPressed, (int)key, ofapp);
 }
 
 //--------------------------------------------------------------
 void ofxMultiLanguageSoftKey::onRelease(int x, int y, int button) {
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
-			
 			break;
 		case OFXSK_KEY_TAB: 
 			ofapp->keyReleased(OF_KEY_TAB);
@@ -291,7 +283,6 @@ void ofxMultiLanguageSoftKey::onRelease(int x, int y, int button) {
 			ofapp->keyReleased((int)key);
 			break;
 	}
-	//ofNotifyEvent(ofEvents.keyReleased, (int)key, ofapp));
 }
 
 //--------------------------------------------------------------

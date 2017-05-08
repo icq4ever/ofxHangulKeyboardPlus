@@ -16,18 +16,18 @@ public:
 	ofxHangulKeyboardPlus();
 	~ofxHangulKeyboardPlus();
 	
-	void setup(ofBaseApp *_ofApp, bool hangulMode);
+	void setup(ofBaseApp *_ofApp, int inputLang);
 	void setPosition(ofVec2f pos);
 	void draw();
 	void sendKey(int key);
 	void toggleKeyboard();
 	string getBuffer();
 	void clearBuffer();
-	bool getInputMode();
+	int getInputMethod();
 	
 protected:
 	ofBaseApp	*ofApp;
-	bool isHangulMode;
+	int inputMethod;
 	
 	string mergedBuffer;
 	

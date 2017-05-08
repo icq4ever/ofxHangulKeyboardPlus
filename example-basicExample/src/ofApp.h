@@ -23,13 +23,10 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	
-	ofxHangulKeyboardPlus *keyboard;
-	ofxTrueTypeFontUC	*textFont;
+	ofxHangulKeyboardPlus	*keyboard;
+	ofxTrueTypeFontUC		*textFont;
 	string stringBox;
-	string debugMessage;
 
-	bool isHangulInputMode;
+	int inputMethodType;
 	float lastKeyComboCheckTimer;
-	
 };

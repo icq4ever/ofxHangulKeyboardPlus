@@ -25,6 +25,7 @@ softHangulKeyboard::softHangulKeyboard() {
 
 string softHangulKeyboard::getBuffer(){
 	return stringBuffer;
+	clearBuffer();
 }
 
 int softHangulKeyboard::getLangState(){
@@ -48,26 +49,29 @@ void softHangulKeyboard::setup( ofBaseApp* _ofApp, int layout ) {
 }
 
 void softHangulKeyboard::activate(){
-	if(getLangState() == OFXVHK_LAYOUT_EN)		cout << "EN KEYBOARD ACTIVATED" << endl;
-	else										cout << "KR KEYBOARD ACTIVATED" << endl;
-	
 	isActivated = true;
 }
 
 void softHangulKeyboard::deActivate(){
-	if(getLangState() == OFXVHK_LAYOUT_EN)		cout << "EN KEYBOARD DEACTIVATED" << endl;
-	else										cout << "KR AEYBOARD DEACTIVATED" << endl;
-	
 	isActivated = false;
 }
 
 //--------------------------------------------------------------
 void softHangulKeyboard::setLayout(int layout) {
 
+	// 1st line
 	addKey('`', "`", "`"); addKey('1', "1", "1"); addKey('2', "2", "2"); addKey('3', "3", "3"); addKey('4', "4", "4"); addKey('5', "5", "5"); addKey('6', "6", "6"); addKey('7', "7", "7"); addKey('8', "8", "8"); addKey('9', "9", "9"); addKey('0', "0", "0"); addKey('-', "-", "-"); addKey('=', "=", "="); addKey(OFXSK_KEY_DELETE, "delete", "delete"); newRow();
+	
+	// 2nd line
 	addKey(OFXSK_KEY_TAB, "tab", "tab"); addKey('q', "q", "ㅂ"); addKey('w', "w", "ㅈ"); addKey('e', "e", "ㄷ"); addKey('r', "r", "ㄱ"); addKey('t', "t", "ㅅ"); addKey('y', "y", "ㅛ"); addKey('u', "u", "ㅕ"); addKey('i', "i", "ㅑ"); addKey('o', "o", "ㅐ"); addKey('p', "p", "ㅔ"); addKey('[', "[", "["); addKey(']', "]", "]"); addKey('\\', "\\", "\\"); newRow();
+	
+	// 3rd line
 	addKey(OFXSK_KEY_CAPS, "capslock", "capslock"); addKey('a', "a", "ㅁ"); addKey('s', "s", "ㄴ"); addKey('d', "d", "ㅇ"); addKey('f', "f", "ㄹ"); addKey('g', "g", "ㅎ"); addKey('h', "h", "ㅗ"); addKey('j', "j", "ㅓ"); addKey('k', "k", "ㅏ"); addKey('l', "l", "ㅣ"); addKey(';', ";", ";"); addKey('\'', "\'", "\'"); addKey(OFXSK_KEY_RETURN, "return", "return"); newRow();
+	
+	// 4th line
 	addKey(OFXSK_KEY_SHIFT, "shift", "shift"); addKey('z', "z", "ㅋ"); addKey('x', "x", "ㅋ"); addKey('c', "c", "ㅊ"); addKey('v', "v", "ㅍ"); addKey('b', "b", "ㅠ"); addKey('n', "n", "ㅜ"); addKey('m', "m", "ㅡ"); addKey(',', ",", ","); addKey('.', ".", "."); addKey('/', "/", "/"); addKey(OFXSK_KEY_SHIFT, "shift", "shift"); newRow();
+	
+	// 5th line
 	addKey(' ', " ", " ").padLeft(200).setSize(300, 40), addKey(OFXSK_KEY_LANG, "KR/EN", "한/영").setSize(65, 40);
 }
 
@@ -218,16 +222,12 @@ void softHangulKeyboard::keyInput(int key) {
 			break;
 		case OF_KEY_RETURN:
 			automata.SetKeyCode(KEY_CODE_ENTER);
-			automata.clearBuffer();
 			break;
 		case ' ':
 			automata.SetKeyCode(KEY_CODE_SPACE);
-			automata.clearBuffer();
 			break;
 		case OF_KEY_BACKSPACE:
 			automata.SetKeyCode(KEY_CODE_BACKSPACE);	// KEY_CODE_BACKSPACE
-			popFromBufferEnd();
-			automata.clearBuffer();
 			break;
 			
 		// disable arrow keys
@@ -256,16 +256,17 @@ void softHangulKeyboard::keyInput(int key) {
 			break;
 	}
 
+
 	m_wstrText = automata.completeText + automata.ingWord;
 	std::wstring_convert<std::codecvt_utf8<wchar_t>,wchar_t> convert;
 	stringBuffer.assign(convert.to_bytes(m_wstrText));
-
 }
 
 
 void softHangulKeyboard::popFromBufferEnd(){
 	stringBuffer.pop_back();
-	m_wstrText.pop_back();
+	m_wstrText.clear();
+//	m_wstrText.pop_back();
 }
 
 //--------------------------------------------------------------
@@ -274,15 +275,8 @@ void softHangulKeyboard::newRow() {
 }
 
 void softHangulKeyboard::toggleInputLanguage(){
-	if(inputLangState == OFXVHK_LAYOUT_EN)		{
-		inputLangState = OFXVHK_LAYOUT_KR;
-//		keys.clear();
-//		setLayout(OFXVHK_LAYOUT_KR);
-	} else {
-		inputLangState = OFXVHK_LAYOUT_EN;
-//		keys.clear();
-//		setLayout(OFXVHK_LAYOUT_EN);
-	}
+	if(inputLangState == OFXVHK_LAYOUT_EN)		inputLangState = OFXVHK_LAYOUT_KR;
+	else										inputLangState = OFXVHK_LAYOUT_EN;
 }
 
 //--------------------------------------------------------------
@@ -303,7 +297,6 @@ bool softHangulKeyboard::isGetActivated(){
 void softHangulKeyboard::draw() {
 		int xpos = position.x;
 		int ypos = position.y;
-		//	cout << ofToString(ofGetElapsedTimef());
 	
 	// total key size is 55
 	for(int i=0; i<keys.size(); i++){
@@ -341,6 +334,7 @@ void softHangulKeyboard::setPosition(float _x, float _y){
 void softHangulKeyboard::clearBuffer(){
 	m_wstrText.clear();
 	stringBuffer.clear();
+	automata.clearBuffer();
 }
 
 //--------------------------------------------------------------

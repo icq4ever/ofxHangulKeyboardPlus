@@ -13,8 +13,8 @@ void ofApp::setup(){
 	lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
 	
 	keyboard = new ofxHangulKeyboardPlus();
-	keyboard->setup(this, true);
-	isHangulInputMode = keyboard->getInputMode();
+	keyboard->setup(this, OFXVHK_LAYOUT_EN);
+	inputMethodType = keyboard->getInputMethod();
 }
 
 //--------------------------------------------------------------
@@ -51,7 +51,6 @@ void ofApp::keyPressed(int key){
 			
 			// 키보드 교체
 			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();		// prevent change too fast
-//			isHangulInputMode =  keyboard->getInputMode();
 		}
 	}
 	
@@ -59,50 +58,22 @@ void ofApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-}
-
+void ofApp::keyReleased(int key){ }
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
-
-}
-
+void ofApp::mouseMoved(int x, int y){ }
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
+void ofApp::mouseDragged(int x, int y, int button){ }
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
+void ofApp::mousePressed(int x, int y, int button){ }
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
+void ofApp::mouseReleased(int x, int y, int button){ }
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
+void ofApp::mouseEntered(int x, int y){ }
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
+void ofApp::mouseExited(int x, int y){ }
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
+void ofApp::windowResized(int w, int h){ }
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
+void ofApp::gotMessage(ofMessage msg){ }
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
-}
+void ofApp::dragEvent(ofDragInfo dragInfo){ }
