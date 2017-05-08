@@ -7,6 +7,7 @@
 //
 
 #include "ofMain.h"
+#include "ofxTrueTypeFontUC.h"
 #include "softHangulKeyboard.h"
 
 class ofxHangulKeyboardPlus{
@@ -18,15 +19,18 @@ public:
 	
 	void setup(ofBaseApp *_ofApp, int inputLang);
 	void setPosition(ofVec2f pos);
-	void draw();
+	void draw(float _x, float _y);
+	void draw(ofVec2f pos);
 	void sendKey(int key);
 	void toggleKeyboard();
 	string getBuffer();
 	void clearBuffer();
 	int getInputMethod();
+	void displayInputLanguageHUD(float _x, float _y);
 	
 protected:
-	ofBaseApp	*ofApp;
+	ofBaseApp			*ofApp;
+	ofxTrueTypeFontUC	*hudFont;
 	int inputMethod;
 	
 	string mergedBuffer;

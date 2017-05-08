@@ -11,11 +11,13 @@
 ofxHangulKeyboardPlus::ofxHangulKeyboardPlus(){
 	keyboard = new softHangulKeyboard();
 	
-	position = ofVec2f(100, 350);
+	hudFont = new ofxTrueTypeFontUC();
+	hudFont->loadFont("AppleSDGothicNeo-Regular.otf", 16, true, true);
 }
 
 ofxHangulKeyboardPlus::~ofxHangulKeyboardPlus(){
 	delete keyboard;
+	delete hudFont;
 }
 
 void ofxHangulKeyboardPlus::setup(ofBaseApp* _ofApp, int inputLang){
@@ -31,12 +33,16 @@ void ofxHangulKeyboardPlus::setPosition(ofVec2f pos){
 }
 
 void ofxHangulKeyboardPlus::sendKey(int _key){
-		keyboard->keyInput(_key);
-		mergedBuffer = keyboard->getBuffer();
+	keyboard->keyInput(_key);
+	mergedBuffer = keyboard->getBuffer();
 }
 
-void ofxHangulKeyboardPlus::draw(){
-	keyboard->draw(position);
+void ofxHangulKeyboardPlus::draw(float _x, float _y){
+	keyboard->draw(ofVec2f(_x, _y));
+}
+
+void ofxHangulKeyboardPlus::draw(ofVec2f pos){
+	keyboard->draw(pos);
 }
 
 void ofxHangulKeyboardPlus::toggleKeyboard(){
@@ -54,4 +60,25 @@ void ofxHangulKeyboardPlus::clearBuffer(){
 
 int ofxHangulKeyboardPlus::getInputMethod(){
 	return inputMethod;
+}
+
+// 언어 설정 HUD 출력
+void ofxHangulKeyboardPlus::displayInputLanguageHUD(float _x, float _y){
+	ofPushMatrix();
+	ofPushStyle();
+	{
+		ofTranslate(_x,	_y);
+		ofSetHexColor(0x333333);
+		ofFill();
+		ofDrawRectRounded(0, 0, 60, 60, 5);
+		
+		ofSetHexColor(0xFFFFFF);
+		if(inputMethod == OFXVHK_LAYOUT_EN){
+			hudFont->drawStringAsShapes("EN", 17, 38);
+		} else {
+			hudFont->drawStringAsShapes("한글", 12, 38);
+		}
+	}
+	ofPopStyle();
+	ofPopMatrix();
 }

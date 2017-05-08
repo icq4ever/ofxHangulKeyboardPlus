@@ -1,9 +1,10 @@
 /*
  *  ofxMultiLanguageSoftKey.h
- *  softKeyboardExample
  *
- *  Created by Jeffrey Crouse on 11/9/10.
+ *  original 'softKeyboardExample' code Created by Jeffrey Crouse on 11/9/10.
  *  Copyright 2010 Eyebeam. All rights reserved.
+ *
+ *  modified by Yi donghoon on 09/05/17
  *
  */
 

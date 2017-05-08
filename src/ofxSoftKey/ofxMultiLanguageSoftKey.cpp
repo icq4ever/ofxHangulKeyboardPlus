@@ -1,68 +1,15 @@
 /*
  *  ofxMultiLanguageSoftKey.cpp
- *  softKeyboardExample
  *
- *  Created by Jeffrey Crouse on 11/9/10.
+ *  original 'softKeyboardExample' code Created by Jeffrey Crouse on 11/9/10.
  *  Copyright 2010 Eyebeam. All rights reserved.
  *
+ *  modified by Yi donghoon on 09/05/17
  */
 
 #include "ofxMultiLanguageSoftKey.h"
 
 #pragma mark CONSTRUCTORS
-
-//--------------------------------------------------------------
-//ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, ofBaseApp* _ofApp) {
-//	labelFont = new ofxTrueTypeFontUC();
-//	labelFont->loadFont("AppleSDGothicNeo-Regular.otf", 12, true, true);
-//	
-//	ofapp = _ofApp;
-//	key = _key;
-//	roundness = 0;
-//	
-//	textColor = ofColor(0);
-//	textBGColor = ofColor(204);
-//	borderColor = ofColor(0);
-//	hoverColor = ofColor(153);
-//	clickColor = ofColor(255, 0, 0);
-//	isLastInRow = false;
-//	
-//	disableAppEvents();
-//	enableMouseEvents();
-//	
-//	padding = new int[4];
-//	setPadding(5, 5, 5, 5);
-//
-//	switch(_key) {
-//		case OFXSK_KEY_SHIFT:
-//			label = "shift";
-//			setSize(110, 40);
-//			break;
-//		case OFXSK_KEY_TAB:
-//			label = "tab";
-//			setSize(75, 40);
-//			break;
-//		case OFXSK_KEY_CAPS:
-//			label = "caps";
-//			setSize(85, 40);
-//			break;
-//		case OFXSK_KEY_DELETE:
-//			label = "delete";
-//			setSize(75, 40);
-//			break;
-//		case OFXSK_KEY_RETURN:
-//			label = "return";
-//			setSize(82, 40);
-//			break;
-//		default:
-////			label.assign(_label);
-//			label = string(1, key);
-//			setSize(40, 40);
-//			break;
-//
-//	}
-//}
-
 
 // initialize with keyCode, en/kr label
 ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, string _krLabel, ofBaseApp* _ofApp) {

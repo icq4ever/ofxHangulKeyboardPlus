@@ -5,10 +5,11 @@ void ofApp::setup(){
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	ofSetLogLevel(OF_LOG_SILENT);
+	ofSetWindowTitle("ofxHangulKeyboardPlusExample");
+
 	
 	textFont = new ofxTrueTypeFontUC();
 	textFont->loadFont("AppleSDGothicNeo-Regular.otf", 30, true, true);
-	
 	
 	lastKeyComboCheckTimer = ofGetElapsedTimeMillis();
 	
@@ -24,18 +25,18 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofBackground(0x333333);
+	ofBackground(0x222222);
 
 	// draw keyboard
-	keyboard->draw();
-	
+	keyboard->draw(ofGetWidth()/2-784/2, 350);
+	keyboard->displayInputLanguageHUD(ofGetWidth()-90, 30);
 
+	// draw typed string
 	ofSetHexColor(0xFFFFFF);
 	ofFill();
 	
 	textFont->drawStringAsShapes(stringBox, 50, 120);
 }
-
 
 void ofApp::exit(){
 	delete textFont;
@@ -43,13 +44,12 @@ void ofApp::exit(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	
+	// shorcut for toggle input language
 	if(key == OF_KEY_F12){
 		if(ofGetElapsedTimeMillis() - lastKeyComboCheckTimer > 50){
-			
-			// toggle lang mode
+			// toggle input language
 			keyboard->toggleKeyboard();
-			
-			// 키보드 교체
 			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();		// prevent change too fast
 		}
 	}

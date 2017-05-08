@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxTrueTypeFontUC.h"
 #include "ofxHangulKeyboardPlus.h"
 
 class ofApp : public ofBaseApp{

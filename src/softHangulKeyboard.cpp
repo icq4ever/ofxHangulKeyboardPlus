@@ -295,8 +295,11 @@ bool softHangulKeyboard::isGetActivated(){
 }
 
 void softHangulKeyboard::draw() {
-		int xpos = position.x;
-		int ypos = position.y;
+	ofPushMatrix();
+	ofTranslate(position.x, position.y);
+	
+	int xpos = 0;
+	int ypos = 0;
 	
 	// total key size is 55
 	for(int i=0; i<keys.size(); i++){
@@ -307,13 +310,17 @@ void softHangulKeyboard::draw() {
 		keys[i]->draw(getLangState());
 		
 		if(keys[i]->isLastInRow) {
-			xpos  = position.x;
+			xpos  = 0;
 			ypos += keys[i]->height + keys[i]->padding[OFXSK_PADDING_BOTTOM];
 		} else {
 			xpos += keys[i]->width + keys[i]->padding[OFXSK_PADDING_RIGHT];
 		}
 	}
 
+	ofNoFill();
+	ofSetHexColor(0xFFFFFF);
+	ofDrawRectangle(-10, -15, 785, 255);
+	ofPopMatrix();
 	
 }
 
