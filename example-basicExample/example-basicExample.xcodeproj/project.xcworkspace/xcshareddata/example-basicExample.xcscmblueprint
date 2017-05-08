@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1D8719C5D09F4E16669E540D5DEC0BBAFBD488E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "328B2D9D97956D43F1C477558678A6865720047A" : 9223372036854775807,
+    "1D8719C5D09F4E16669E540D5DEC0BBAFBD488E7" : 9223372036854775807,
+    "6E85F585BA7940AD33F8E74F0EE05D55511194B6" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E68E8A62-5AC0-437A-8BEB-F743EEE1D971",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "328B2D9D97956D43F1C477558678A6865720047A" : "ofxMSAInteractiveObject\/",
+    "1D8719C5D09F4E16669E540D5DEC0BBAFBD488E7" : "ofxHangulKeyboardPlus\/",
+    "6E85F585BA7940AD33F8E74F0EE05D55511194B6" : "ofxTrueTypeFontUC\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "example-basicExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "example-basicExample\/example-basicExample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/icq4ever\/ofxHangulKeyboardPlus",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1D8719C5D09F4E16669E540D5DEC0BBAFBD488E7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/memo\/ofxMSAInteractiveObject",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "328B2D9D97956D43F1C477558678A6865720047A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hironishihara\/ofxTrueTypeFontUC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6E85F585BA7940AD33F8E74F0EE05D55511194B6"
+    }
+  ]
+}

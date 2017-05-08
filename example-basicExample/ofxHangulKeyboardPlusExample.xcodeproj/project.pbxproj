@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		575A4F1615A86291E6D40AC2 /* softHangulKeyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E0BA0055D122E7715B2213A /* softHangulKeyboard.cpp */; };
-		5A608BA5F4AF31AB58B08C97 /* ofxMultiLanguageSoftKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C93BFEDA7C7706F94FF69096 /* ofxMultiLanguageSoftKey.cpp */; };
+		5A608BA5F4AF31AB58B08C97 /* MultiLanguageSoftKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C93BFEDA7C7706F94FF69096 /* MultiLanguageSoftKey.cpp */; };
 		6535EC051FE1A0763AF31C35 /* HangulAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FB5BB92E975327BBD2E9DF1 /* HangulAutomata.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E80721E21DAAEC0D00859CD3 /* ofxHangulKeyboardPlus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E80721E01DAAEC0D00859CD3 /* ofxHangulKeyboardPlus.cpp */; };
-		E98F783381500A309A59D989 /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9323AB58596A7B22BDA8EDF5 /* ofxMSAInteractiveObject.cpp */; };
 		EDD3448A1F73BF611F4D46A8 /* ofxTrueTypeFontUC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43B2FDAED735D73FF734F634 /* ofxTrueTypeFontUC.cpp */; };
 /* End PBXBuildFile section */
 
@@ -52,11 +51,9 @@
 		1E0BA0055D122E7715B2213A /* softHangulKeyboard.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = softHangulKeyboard.cpp; path = ../src/softHangulKeyboard.cpp; sourceTree = SOURCE_ROOT; };
 		22FDF81C4A468B788F424022 /* ofxTrueTypeFontUC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTrueTypeFontUC.h; path = ../../../addons/ofxTrueTypeFontUC/src/ofxTrueTypeFontUC.h; sourceTree = SOURCE_ROOT; };
 		43B2FDAED735D73FF734F634 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTrueTypeFontUC.cpp; path = ../../../addons/ofxTrueTypeFontUC/src/ofxTrueTypeFontUC.cpp; sourceTree = SOURCE_ROOT; };
-		5591ECABD1F42E0700F07BCA /* ofxMultiLanguageSoftKey.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMultiLanguageSoftKey.h; path = ../src/ofxSoftKey/ofxMultiLanguageSoftKey.h; sourceTree = SOURCE_ROOT; };
-		5F3E7BBF1BF700FE7E2FCE9D /* ofxMSAInteractiveObject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMSAInteractiveObject.h; path = ../../../addons/ofxHangulKeyboardPlus/src/ofxMSAInteractiveObject/ofxMSAInteractiveObject.h; sourceTree = SOURCE_ROOT; };
+		5591ECABD1F42E0700F07BCA /* MultiLanguageSoftKey.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = MultiLanguageSoftKey.h; path = ../src/ofxSoftKey/MultiLanguageSoftKey.h; sourceTree = SOURCE_ROOT; };
 		7FB5BB92E975327BBD2E9DF1 /* HangulAutomata.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = HangulAutomata.cpp; path = ../../../addons/ofxHangulKeyboardPlus/src/HangulAutomata/HangulAutomata.cpp; sourceTree = SOURCE_ROOT; };
-		9323AB58596A7B22BDA8EDF5 /* ofxMSAInteractiveObject.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMSAInteractiveObject.cpp; path = ../../../addons/ofxHangulKeyboardPlus/src/ofxMSAInteractiveObject/ofxMSAInteractiveObject.cpp; sourceTree = SOURCE_ROOT; };
-		C93BFEDA7C7706F94FF69096 /* ofxMultiLanguageSoftKey.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMultiLanguageSoftKey.cpp; path = ../src/ofxSoftKey/ofxMultiLanguageSoftKey.cpp; sourceTree = SOURCE_ROOT; };
+		C93BFEDA7C7706F94FF69096 /* MultiLanguageSoftKey.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MultiLanguageSoftKey.cpp; path = ../src/ofxSoftKey/MultiLanguageSoftKey.cpp; sourceTree = SOURCE_ROOT; };
 		D6030FAE1FC0D24C5700B13A /* HangulAutomata.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = HangulAutomata.h; path = ../../../addons/ofxHangulKeyboardPlus/src/HangulAutomata/HangulAutomata.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* ofxHangulKeyboardPlusExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofxHangulKeyboardPlusExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,8 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				F471AC018FAB6AE98C280103 /* HangulAutomata */,
-				FA0B2EFCFB3B7247E001738C /* ofxMultiLanguageSoftKey */,
-				7A26FD8ADA20C89A15509206 /* ofxMSAInteractiveObject */,
+				FA0B2EFCFB3B7247E001738C /* MultiLanguageSoftKey */,
 				1E0BA0055D122E7715B2213A /* softHangulKeyboard.cpp */,
 				022C433456C6CAA34AC04A0E /* softHangulKeyboard.h */,
 			);
@@ -118,15 +114,6 @@
 			children = (
 			);
 			name = local_addons;
-			sourceTree = "<group>";
-		};
-		7A26FD8ADA20C89A15509206 /* ofxMSAInteractiveObject */ = {
-			isa = PBXGroup;
-			children = (
-				9323AB58596A7B22BDA8EDF5 /* ofxMSAInteractiveObject.cpp */,
-				5F3E7BBF1BF700FE7E2FCE9D /* ofxMSAInteractiveObject.h */,
-			);
-			name = ofxMSAInteractiveObject;
 			sourceTree = "<group>";
 		};
 		95D87FD7121C8B2D7D5F155C /* ofxTrueTypeFontUC */ = {
@@ -195,13 +182,13 @@
 			name = HangulAutomata;
 			sourceTree = "<group>";
 		};
-		FA0B2EFCFB3B7247E001738C /* ofxMultiLanguageSoftKey */ = {
+		FA0B2EFCFB3B7247E001738C /* MultiLanguageSoftKey */ = {
 			isa = PBXGroup;
 			children = (
-				C93BFEDA7C7706F94FF69096 /* ofxMultiLanguageSoftKey.cpp */,
-				5591ECABD1F42E0700F07BCA /* ofxMultiLanguageSoftKey.h */,
+				C93BFEDA7C7706F94FF69096 /* MultiLanguageSoftKey.cpp */,
+				5591ECABD1F42E0700F07BCA /* MultiLanguageSoftKey.h */,
 			);
-			name = ofxMultiLanguageSoftKey;
+			name = MultiLanguageSoftKey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,9 +282,8 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				6535EC051FE1A0763AF31C35 /* HangulAutomata.cpp in Sources */,
 				E80721E21DAAEC0D00859CD3 /* ofxHangulKeyboardPlus.cpp in Sources */,
-				E98F783381500A309A59D989 /* ofxMSAInteractiveObject.cpp in Sources */,
 				575A4F1615A86291E6D40AC2 /* softHangulKeyboard.cpp in Sources */,
-				5A608BA5F4AF31AB58B08C97 /* ofxMultiLanguageSoftKey.cpp in Sources */,
+				5A608BA5F4AF31AB58B08C97 /* MultiLanguageSoftKey.cpp in Sources */,
 				EDD3448A1F73BF611F4D46A8 /* ofxTrueTypeFontUC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

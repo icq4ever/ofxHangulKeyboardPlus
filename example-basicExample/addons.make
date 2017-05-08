@@ -1,2 +1,3 @@
 ofxHangulKeyboardPlus
+ofxMSAInteractiveObject
 ofxTrueTypeFontUC
