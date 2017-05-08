@@ -19,12 +19,12 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	
+	stringBox.assign(keyboard->getBuffer());
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofBackground(0);
+	ofBackground(0x333333);
 
 	// draw keyboard
 	keyboard->draw();
@@ -51,12 +51,11 @@ void ofApp::keyPressed(int key){
 			
 			// 키보드 교체
 			lastKeyComboCheckTimer = ofGetElapsedTimeMillis();		// prevent change too fast
-			isHangulInputMode =  keyboard->getInputMode();
+//			isHangulInputMode =  keyboard->getInputMode();
 		}
 	}
 	
-	
-	
+	keyboard->sendKey(key);
 }
 
 //--------------------------------------------------------------
