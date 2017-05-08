@@ -1,5 +1,5 @@
 /*
- *  ofxMultiLanguageSoftKey.cpp
+ *  MultiLanguageSoftKey.cpp
  *
  *  original 'softKeyboardExample' code Created by Jeffrey Crouse on 11/9/10.
  *  Copyright 2010 Eyebeam. All rights reserved.
@@ -7,12 +7,12 @@
  *  modified by Yi donghoon on 09/05/17
  */
 
-#include "ofxMultiLanguageSoftKey.h"
+#include "MultiLanguageSoftKey.h"
 
 #pragma mark CONSTRUCTORS
 
 // initialize with keyCode, en/kr label
-ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, string _krLabel, ofBaseApp* _ofApp) {
+MultiLanguageSoftKey::MultiLanguageSoftKey(int _key, string _enLabel, string _krLabel, ofBaseApp* _ofApp) {
 	enLabel = new string();
 	krLabel = new string();
 	labelFont = new ofxTrueTypeFontUC();
@@ -69,7 +69,7 @@ ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, stri
 	}
 }
 
-ofxMultiLanguageSoftKey::~ofxMultiLanguageSoftKey(){
+MultiLanguageSoftKey::~MultiLanguageSoftKey(){
 	delete enLabel;
 	delete krLabel;
 	delete labelFont;
@@ -79,7 +79,7 @@ ofxMultiLanguageSoftKey::~ofxMultiLanguageSoftKey(){
 #pragma mark PADDING
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setPadding(int top, int right, int bottom, int left) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setPadding(int top, int right, int bottom, int left) {
 	padding[OFXSK_PADDING_TOP] = top;
 	padding[OFXSK_PADDING_RIGHT] = right;
 	padding[OFXSK_PADDING_BOTTOM] = bottom;
@@ -88,13 +88,13 @@ ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setPadding(int top, int right,
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::padLeft(int left) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::padLeft(int left) {
 	padding[OFXSK_PADDING_LEFT] += left;
 	return *this;
 }
 	
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::padRight(int right) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::padRight(int right) {
 	padding[OFXSK_PADDING_RIGHT] += right;
 	return *this;
 }
@@ -104,7 +104,7 @@ ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::padRight(int right) {
 
 
 //--------------------------------------------------------------
-void ofxMultiLanguageSoftKey::draw(int _langState) {
+void MultiLanguageSoftKey::draw(int _langState) {
 	
 	// Draw the background
 	ofPushStyle();
@@ -133,43 +133,43 @@ void ofxMultiLanguageSoftKey::draw(int _langState) {
 #pragma mark SETTERS
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setKey(char key) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setKey(char key) {
 	this->key = key;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setTextColor(ofColor c) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setTextColor(ofColor c) {
 	this->textColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setTextBGColor(ofColor c) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setTextBGColor(ofColor c) {
 	this->textBGColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setBorderColor(ofColor c) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setBorderColor(ofColor c) {
 	this->borderColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setHoverColor(ofColor c) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setHoverColor(ofColor c) {
 	this->hoverColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setClickColor(ofColor c) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setClickColor(ofColor c) {
 	this->clickColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setRoundness(float r) {
+MultiLanguageSoftKey& MultiLanguageSoftKey::setRoundness(float r) {
 	this->roundness = r;
 	return *this;
 }
@@ -180,7 +180,7 @@ ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setRoundness(float r) {
 
 
 //--------------------------------------------------------------
-void ofxMultiLanguageSoftKey::onPress(int x, int y, int button) {
+void MultiLanguageSoftKey::onPress(int x, int y, int button) {
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
 			break;
@@ -207,7 +207,7 @@ void ofxMultiLanguageSoftKey::onPress(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofxMultiLanguageSoftKey::onRelease(int x, int y, int button) {
+void MultiLanguageSoftKey::onRelease(int x, int y, int button) {
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
 			break;
@@ -233,6 +233,6 @@ void ofxMultiLanguageSoftKey::onRelease(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofxMultiLanguageSoftKey::onReleaseOutside(int x, int y, int button) {
+void MultiLanguageSoftKey::onReleaseOutside(int x, int y, int button) {
 
 }

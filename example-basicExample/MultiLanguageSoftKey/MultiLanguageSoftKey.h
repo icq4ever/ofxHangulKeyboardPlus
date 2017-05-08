@@ -1,5 +1,5 @@
 /*
- *  ofxMultiLanguageSoftKey.h
+ *  MultiLanguageSoftKey.h
  *
  *  original 'softKeyboardExample' code Created by Jeffrey Crouse on 11/9/10.
  *  Copyright 2010 Eyebeam. All rights reserved.
@@ -33,7 +33,7 @@
 #define OFXVHK_LAYOUT_KR 2
 
 class ofApp;
-class ofxMultiLanguageSoftKey : public ofxMSAInteractiveObject {
+class MultiLanguageSoftKey : public ofxMSAInteractiveObject {
 public:
 	ofxTrueTypeFontUC *labelFont;
 	
@@ -42,20 +42,20 @@ public:
 	int* padding;
 	
 	// 영문, 한글 키보드 라벨을 동시에 추가한다.
-	ofxMultiLanguageSoftKey(int key, string _enLabel, string _krLabel, ofBaseApp* ofApp);
-	~ofxMultiLanguageSoftKey();
+	MultiLanguageSoftKey(int key, string _enLabel, string _krLabel, ofBaseApp* ofApp);
+	~MultiLanguageSoftKey();
 
-	ofxMultiLanguageSoftKey& setPadding(int top, int right, int bottom, int left);
-	ofxMultiLanguageSoftKey& padLeft(int left);
-	ofxMultiLanguageSoftKey& padRight(int right);
+	MultiLanguageSoftKey& setPadding(int top, int right, int bottom, int left);
+	MultiLanguageSoftKey& padLeft(int left);
+	MultiLanguageSoftKey& padRight(int right);
 	
-	ofxMultiLanguageSoftKey& setKey(const char key);
-	ofxMultiLanguageSoftKey& setTextColor(ofColor c);
-	ofxMultiLanguageSoftKey& setTextBGColor(ofColor c);
-	ofxMultiLanguageSoftKey& setBorderColor(ofColor c);
-	ofxMultiLanguageSoftKey& setHoverColor(ofColor c);
-	ofxMultiLanguageSoftKey& setClickColor(ofColor c);
-	ofxMultiLanguageSoftKey& setRoundness(float r);
+	MultiLanguageSoftKey& setKey(const char key);
+	MultiLanguageSoftKey& setTextColor(ofColor c);
+	MultiLanguageSoftKey& setTextBGColor(ofColor c);
+	MultiLanguageSoftKey& setBorderColor(ofColor c);
+	MultiLanguageSoftKey& setHoverColor(ofColor c);
+	MultiLanguageSoftKey& setClickColor(ofColor c);
+	MultiLanguageSoftKey& setRoundness(float r);
 	
 	void draw(int _langState);
 	
