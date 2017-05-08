@@ -14,7 +14,7 @@
 #define _OFX_SOFTKEYBOARD
 
 #include "ofMain.h"
-#include "ofxMultiLanguageSoftKey.h"
+#include "MultiLanguageSoftKey.h"
 #include "HangulAutomata.h"
 
 
@@ -35,7 +35,7 @@ public:
 	void draw();
 
 	// 소프트키
-	ofxMultiLanguageSoftKey& addKey(int c, string enLabel, string krLabel);
+	MultiLanguageSoftKey& addKey(int c, string enLabel, string krLabel);
 	void newRow();
 
 	void setPadding(int top, int right, int bottom, int left);
@@ -68,7 +68,7 @@ public:
 	
 protected:
 	ofBaseApp* ofapp;
-	vector<ofxMultiLanguageSoftKey*> keys;
+	vector<MultiLanguageSoftKey*> keys;
 	ofVec2f position;
 	
 	HangulAutomata automata;
