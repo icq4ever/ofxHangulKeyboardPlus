@@ -9,54 +9,48 @@
 #include "ofxHangulKeyboardPlus.h"
 
 ofxHangulKeyboardPlus::ofxHangulKeyboardPlus(){
-	hangulKeyboard = new softHangulKeyboard();
-	engKeyboard = new softHangulKeyboard();
-	
-	hangulKeyboard->activate();
-//	engKeyboard->deActivate();
+	keyboard = new softHangulKeyboard();
 	
 	position = ofVec2f(100, 350);
 }
 
 ofxHangulKeyboardPlus::~ofxHangulKeyboardPlus(){
-	delete hangulKeyboard;
-	delete engKeyboard;
-
+	delete keyboard;
 }
 
-void ofxHangulKeyboardPlus::setup(ofBaseApp *_ofApp, bool hangulMode){
+void ofxHangulKeyboardPlus::setup(ofBaseApp* _ofApp, bool hangulMode){
 	ofApp = _ofApp;
-	hangulKeyboard->setup(ofApp, OFXVHK_LAYOUT_KR);
-	engKeyboard->setup(ofApp, OFXVHK_LAYOUT_EN);
+	keyboard->setup(ofApp, OFXVHK_LAYOUT_KR);
 	
-	if(hangulMode)	isHangulMode = true;
-	else			isHangulMode = false;
+	if(hangulMode)	{
+		isHangulMode = true;
+		keyboard->activate();
+	}
+}
+
+void ofxHangulKeyboardPlus::setPosition(ofVec2f pos){
+	position = pos;
 }
 
 void ofxHangulKeyboardPlus::sendKey(int _key){
 	if(_key == OF_KEY_BACKSPACE){			// if backspace key is pressed, remove end of char from mergedBuffer
-		if(mergedBuffer.length() > 0)	mergedBuffer.pop_back();
+		if(mergedBuffer.length() > 0)			mergedBuffer.pop_back();
+	} else {
+		
+			keyboard->keyInput(_key);
+			mergedBuffer = keyboard->getBuffer();	// --> error occured
+			keyboard->clearBuffer();
 	}
-	
-	hangulKeyboard->keyInput(_key);
-	engKeyboard->keyInput(_key);
-}
 
-void ofxHangulKeyboardPlus::update(){
-	tmpBuffer_kr = hangulKeyboard->getBuffer();
-	tmpBuffer_en = engKeyboard->getBuffer();
 }
 
 void ofxHangulKeyboardPlus::draw(){
-	if(hangulKeyboard->isGetActivated())	hangulKeyboard->draw(position);
-	if(engKeyboard->isGetActivated())		engKeyboard->draw(position);
+	keyboard->draw(position);
 }
 
 void ofxHangulKeyboardPlus::toggleKeyboard(){
-	hangulKeyboard->toggleInputLanguage();
-	engKeyboard->toggleInputLanguage();
-	
-	// 키보드가 비 활성화 됐을때 fullBuffer에 string을 가져오고, 키보드의 버퍼를 삭제한다.
+	keyboard->toggleInputLanguage();
+	isHangulMode = !isHangulMode;
 }
 
 string ofxHangulKeyboardPlus::getBuffer(){
@@ -64,7 +58,6 @@ string ofxHangulKeyboardPlus::getBuffer(){
 }
 
 void ofxHangulKeyboardPlus::clearBuffer(){
-	// 버퍼 삭제
 	mergedBuffer.clear();
 }
 

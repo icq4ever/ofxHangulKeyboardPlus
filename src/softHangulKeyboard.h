@@ -14,13 +14,12 @@
 #define _OFX_SOFTKEYBOARD
 
 #include "ofMain.h"
-#include "ofxSoftKey.h"
+#include "ofxMultiLanguageSoftKey.h"
 #include "HangulAutomata.h"
 
-#define OFXVHK_LAYOUT_EN 1
-#define OFXVHK_LAYOUT_KR 2
 
-class ofApp;
+
+//class ofApp;
 class softHangulKeyboard   {
 public:
 	softHangulKeyboard();
@@ -30,11 +29,13 @@ public:
 	void setLayout(int layout);
 	void addPadding(int top, int right, int bottom, int left);
 	void reset();
+	
 	void draw(ofVec2f _position);
 	void draw(float x, float y);
 	void draw();
-//	ofxSoftKey& addKey(int c);
-	ofxSoftKey& addKey(int c, string label);
+
+	//	ofxMultiLanguageSoftKey& addKey(int c);
+	ofxMultiLanguageSoftKey& addKey(int c, string enLabel, string krLabel);
 	void newRow();
 
 	void setPadding(int top, int right, int bottom, int left);
@@ -50,28 +51,35 @@ public:
 	
 	void initializeHangulKeyMapTable();
 	void toggleInputLanguage();
+	
 	int	getLangState();
+	
 	void keyInput(int key);
 	string getBuffer();
+	
 	int getHangulMapCode();
 	void setPosition(float x, float y);
 	void setPosition(ofVec2f pos);
+	
 	bool isGetActivated();
+	void clearBuffer();
+	void popFromBufferEnd();
 	
 //	bool shiftOn;
 	
 protected:
 	ofBaseApp* ofapp;
-	vector<ofxSoftKey*> keys;
+	vector<ofxMultiLanguageSoftKey*> keys;
 	ofVec2f position;
 	
 	HangulAutomata automata;
 	int hangulMapCode;
+	wchar_t completedWord;
 	wstring m_wstrText = L"";
 //	string m_strText = "";
 	string stringBuffer = "";
 	
-	// 영문-한글 매핑 테이블 
+	// √è√≤√Ö√é¬®‚àè-√å√Ø√∫√ç‚àè√Ñ √é√ü¬ß√å√Ø√´ √å√ñ√•√è√π¬•√é‚àè√Æ
 	map<char, int> m_HangulKeyTable;
 	int inputLangState;
 	int lastKeyComboCheckTimer;

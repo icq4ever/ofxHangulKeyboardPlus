@@ -25,10 +25,12 @@ public:
 	
 	void initHangulKeyMapTable();			// 음성 테이블 로드
 	// english
-	void		pushASCII(char _c);
+	void		pushASCII(int keyCode);
 	
 	void		Clear();					// 버퍼초기화
 	void		SetKeyCode(int nKeyCode);	// 키코드 받기 (정해진 int 코드값을 입력 받아 한글조합)
+	
+	void		clearBuffer();
 	
 	wchar_t		ingWord;		// 작성중 글자
 	wstring		completeText;	// 완성 문자열
@@ -56,10 +58,8 @@ private:
 	int			ToInitial(int nKeyCode);	// 초성으로
 	int			ToFinal(int nKeyCode);		// 종성으로
 	
-	
 	// 분해
 	void		DecomposeConsonant();		// 자음분해
-	
 	
 	// 합성
 	bool		MixInitial(int nKeyCode);	// 초성합성

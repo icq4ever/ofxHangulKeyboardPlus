@@ -1,5 +1,5 @@
 /*
- *  ofxSoftKey.cpp
+ *  ofxMultiLanguageSoftKey.cpp
  *  softKeyboardExample
  *
  *  Created by Jeffrey Crouse on 11/9/10.
@@ -7,12 +7,12 @@
  *
  */
 
-#include "ofxSoftKey.h"
+#include "ofxMultiLanguageSoftKey.h"
 
 #pragma mark CONSTRUCTORS
 
 //--------------------------------------------------------------
-//ofxSoftKey::ofxSoftKey(int _key, ofBaseApp* _ofApp) {
+//ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, ofBaseApp* _ofApp) {
 //	labelFont = new ofxTrueTypeFontUC();
 //	labelFont->loadFont("AppleSDGothicNeo-Regular.otf", 12, true, true);
 //	
@@ -65,9 +65,9 @@
 
 
 // initialize with keyCode, label
-ofxSoftKey::ofxSoftKey(int _key, string _label, ofBaseApp* _ofApp) {
-	label = new string();
-	hangulLabel = new string();
+ofxMultiLanguageSoftKey::ofxMultiLanguageSoftKey(int _key, string _enLabel, string _krLabel, ofBaseApp* _ofApp) {
+	enLabel = new string();
+	krLabel = new string();
 	labelFont = new ofxTrueTypeFontUC();
 	labelFont->loadFont("AppleSDGothicNeo-Regular.otf", 12, true, true);
 
@@ -91,44 +91,50 @@ ofxSoftKey::ofxSoftKey(int _key, string _label, ofBaseApp* _ofApp) {
 	
 	switch(_key) {
 		case OFXSK_KEY_SHIFT:
-			label->assign("shift");
+			enLabel->assign("shift");
+			krLabel->assign("shift");
 			setSize(110, 40);
 			break;
 		case OFXSK_KEY_TAB:
-			label->assign("tab");
+			enLabel->assign("tab");
+			krLabel->assign("tab");
 			setSize(75, 40);
 			break;
 		case OFXSK_KEY_CAPS:
-			label->assign("caps");
+			enLabel->assign("caps");
+			krLabel->assign("caps");
 			setSize(85, 40);
 			break;
 		case OFXSK_KEY_DELETE:
-			label->assign("delete");
+			enLabel->assign("delete");
+			krLabel->assign("delete");
 			setSize(75, 40);
 			break;
 		case OFXSK_KEY_RETURN:
-			label->assign("return");
+			enLabel->assign("return");
+			krLabel->assign("return");
 			setSize(82, 40);
 			break;
 		default:
-			label->assign(_label);
+			enLabel->assign(_enLabel);
+			krLabel->assign(_krLabel);
 //			hangulLabel = string(1, key)
 			setSize(40, 40);
 			break;
 	}
 }
 
-ofxSoftKey::~ofxSoftKey(){
-	delete label;
+ofxMultiLanguageSoftKey::~ofxMultiLanguageSoftKey(){
+	delete enLabel;
+	delete krLabel;
 	delete labelFont;
-	delete hangulLabel;
 }
 
 
 #pragma mark PADDING
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setPadding(int top, int right, int bottom, int left) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setPadding(int top, int right, int bottom, int left) {
 	padding[OFXSK_PADDING_TOP] = top;
 	padding[OFXSK_PADDING_RIGHT] = right;
 	padding[OFXSK_PADDING_BOTTOM] = bottom;
@@ -137,25 +143,23 @@ ofxSoftKey& ofxSoftKey::setPadding(int top, int right, int bottom, int left) {
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::padLeft(int left) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::padLeft(int left) {
 	padding[OFXSK_PADDING_LEFT] += left;
 	return *this;
 }
 	
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::padRight(int right) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::padRight(int right) {
 	padding[OFXSK_PADDING_RIGHT] += right;
 	return *this;
 }
-
-
 
 #pragma mark APP EVENTS
 
 
 
 //--------------------------------------------------------------
-void ofxSoftKey::draw() {
+void ofxMultiLanguageSoftKey::draw(int _langState) {
 	
 	// Draw the background
 	ofPushStyle();
@@ -172,7 +176,8 @@ void ofxSoftKey::draw() {
 		
 		// Draw the actual letter
 		ofSetColor(textColor);
-		labelFont->drawString(*label, x+10, y+height-10);
+		if(_langState == OFXVHK_LAYOUT_EN)		labelFont->drawString(*enLabel, x+10, y+height-10);
+		else									labelFont->drawString(*krLabel, x+10, y+height-10);
 	}
 	ofPopStyle();
 //	ofDrawBitmapString(label, x+10, y+height-10);
@@ -185,43 +190,43 @@ void ofxSoftKey::draw() {
 #pragma mark SETTERS
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setKey(char key) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setKey(char key) {
 	this->key = key;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setTextColor(ofColor c) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setTextColor(ofColor c) {
 	this->textColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setTextBGColor(ofColor c) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setTextBGColor(ofColor c) {
 	this->textBGColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setBorderColor(ofColor c) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setBorderColor(ofColor c) {
 	this->borderColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setHoverColor(ofColor c) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setHoverColor(ofColor c) {
 	this->hoverColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setClickColor(ofColor c) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setClickColor(ofColor c) {
 	this->clickColor = c;
 	return *this;
 }
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setRoundness(float r) {
+ofxMultiLanguageSoftKey& ofxMultiLanguageSoftKey::setRoundness(float r) {
 	this->roundness = r;
 	return *this;
 }
@@ -232,7 +237,7 @@ ofxSoftKey& ofxSoftKey::setRoundness(float r) {
 
 
 //--------------------------------------------------------------
-void ofxSoftKey::onPress(int x, int y, int button) {
+void ofxMultiLanguageSoftKey::onPress(int x, int y, int button) {
 //	cout << "onPress" << " " << ofGetFrameNum() << endl;
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
@@ -262,7 +267,7 @@ void ofxSoftKey::onPress(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofxSoftKey::onRelease(int x, int y, int button) {
+void ofxMultiLanguageSoftKey::onRelease(int x, int y, int button) {
 	switch(key) {
 		case OFXSK_KEY_SHIFT:
 			
@@ -290,6 +295,6 @@ void ofxSoftKey::onRelease(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofxSoftKey::onReleaseOutside(int x, int y, int button) {
+void ofxMultiLanguageSoftKey::onReleaseOutside(int x, int y, int button) {
 
 }

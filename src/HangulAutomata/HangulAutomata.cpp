@@ -15,12 +15,12 @@ const int LIMIT_MIN = 0xAC00;		// 음성범위 MIN(가)
 const int LIMIT_MAX = 0xD7A3;		// 음성범위 MAX
 
 // 음성 테이블
-wchar_t SOUND_TABLE[110] = {
+const wchar_t SOUND_TABLE[110] = {
 	/* 초성 19자 0 ~ 18 */
-	L'ㄱ', L'ㄲ', L'ㄴ', L'ㄷ', L'ㄸ',	//  0 -  4
-	L'ㄹ', L'ㅁ', L'ㅂ', L'ㅃ', L'ㅅ',	//  5 -  9
-	L'ㅆ', L'ㅇ', L'ㅈ', L'ㅉ', L'ㅊ',	// 10 - 14
-	L'ㅋ', L'ㅌ', L'ㅍ', L'ㅎ',			// 15 - 18
+	L'ㄱ', L'ㄲ', L'ㄴ', L'ㄷ', L'ㄸ',	//   0 -   4
+	L'ㄹ', L'ㅁ', L'ㅂ', L'ㅃ', L'ㅅ',	//   5 -   9
+	L'ㅆ', L'ㅇ', L'ㅈ', L'ㅉ', L'ㅊ',	//  10 -  14
+	L'ㅋ', L'ㅌ', L'ㅍ', L'ㅎ',		//  15 -  18
 	/* 중성 21자 19 ~ 39 */
 	L'ㅏ', L'ㅐ', L'ㅑ', L'ㅒ', L'ㅓ',
 	L'ㅔ', L'ㅕ', L'ㅖ', L'ㅗ', L'ㅘ',
@@ -53,7 +53,7 @@ wchar_t SOUND_TABLE[110] = {
 };
 
 // 초성 합성 테이블  - 사용되지 않는듯..
-int MIXED_CHO_CONSON[5][3] = {
+const int MIXED_CHO_CONSON[5][3] = {
 	//	{ 0, 0,15}, // ㄱ,ㄱ,ㅋ
 	//	{15, 0, 1}, // ㅋ,ㄱ,ㄲ
 	{ 1, 0, 0}, // ㄲ,ㄱ,ㄱ
@@ -75,7 +75,7 @@ int MIXED_CHO_CONSON[5][3] = {
 };
 
 // 초성,중성 모음 합성 테이블
-int MIXED_VOWEL[7][3] = {
+const int MIXED_VOWEL[7][3] = {
 	{27,19,28},	// ㅗ,ㅏ,ㅘ
 	{27,20,29},	// ㅗ,ㅐ,ㅙ	// ㅘ + ㅣ -> ㅗ + ㅐ
 	{27,39,30},	// ㅗ,ㅣ,ㅚ
@@ -86,7 +86,7 @@ int MIXED_VOWEL[7][3] = {
 };
 
 // 종성 합성 테이블
-int MIXED_JONG_CONSON[12][3] = {
+const int MIXED_JONG_CONSON[12][3] = {
 	{41,59,43}, // ㄱ,ㅅ,ㄳ
 	{44,62,45}, // ㄴ,ㅈ,ㄵ
 	{44,67,46}, // ㄴ,ㅎ,ㄶ
@@ -102,7 +102,7 @@ int MIXED_JONG_CONSON[12][3] = {
 };
 
 // 종성 분해 테이블
-int DIVIDE_JONG_CONSON[12][3] = {
+const int DIVIDE_JONG_CONSON[12][3] = {
 	{41,59,43}, // ㄱ,ㅅ,ㄳ
 	{44,62,45}, // ㄴ,ㅈ,ㄵ
 	{44,67,46}, // ㄴ,ㅎ,ㄶ
@@ -125,10 +125,6 @@ HangulAutomata::~HangulAutomata(){
 }
 
 
-// 한글 키 테이블
-void HangulAutomata::initHangulKeyMapTable(){
-	}
-
 // 버퍼 초기화
 void HangulAutomata::Clear() {
 	m_nStatus		= HS_FIRST;
@@ -137,16 +133,43 @@ void HangulAutomata::Clear() {
 	m_completeWord	= NULL;
 }
 
-void HangulAutomata::pushASCII(char _c){
-//	if(static_cast<int>(_c) % 255 > 254)	return;
+void HangulAutomata::pushASCII(int keyCode){
+	//	int keyCode = static_cast<int>(_c);
+	
+	if(keyCode < 0) {
+		m_nStatus = HS_FIRST;
+		
+		if(keyCode == KEY_CODE_SPACE) { // 띄어쓰기
+			if(ingWord)		completeText += ingWord;
+			completeText += L' ';
+			
+			ingWord = NULL;
+		} else if(keyCode == KEY_CODE_ENTER) {  // 내려쓰기
+			if(ingWord)		completeText += ingWord;
+			
+			completeText += L"\n";	// windows
+			//			completeText += L"\n";
+			
+			ingWord = NULL;
+			m_completeWord = NULL;
+		} else if(keyCode == KEY_CODE_BACKSPACE) { // 지우기
+			if(ingWord)		ingWord = NULL;
+			if(completeText.length() > 0)	completeText.pop_back();
+//			wcout << completeText << endl;
+		}
+	}
+	
+	
 	if(ingWord)	completeText += ingWord;
 	
-	completeText += static_cast<wchar_t>(_c);
+	completeText += static_cast<wchar_t>(keyCode);
 	ingWord = NULL;
-	//		completeText += SOUND_TABLE[nKeyCode];
-	
 	
 	m_nStatus = HS_FIRST;
+}
+
+void HangulAutomata::clearBuffer(){
+	completeText.clear();
 }
 
 
@@ -166,28 +189,17 @@ void HangulAutomata::SetKeyCode(int nKeyCode){
 		} else if(nKeyCode == KEY_CODE_ENTER) {  // 내려쓰기
 			if(ingWord)		completeText += ingWord;
 			
-			completeText += L"\n";	// windows
-			//			completeText += L"\n";
+			completeText += L"\n";
 			
 			ingWord = NULL;
 			m_completeWord = NULL;
 		} else if(nKeyCode == KEY_CODE_BACKSPACE) { // 지우기
 			if(ingWord)		ingWord = NULL;
 			else if(completeText.length() > 0)	completeText.pop_back();
-			//			if(ingWord)	{
-			//				if(completeText.length() > 0)	{
-			//					string::size_type n = completeText.find_last_of(L"\n")+1;
-			//					if( n == string::npos )		completeText = completeText.substr(0, completeText.length() - 1);
-			//					else						completeText = completeText.substr(0, completeText.length() - 2);
-			//				}
-			//			} else {
-			//				m_nStatus = DownGradeIngWordStatus(ingWord);
-			//			}
 		}
 		
 		m_nStatus = HS_FIRST;
 		return;
-		
 	}
 	
 	// 숫자 및 특수기호
@@ -196,16 +208,11 @@ void HangulAutomata::SetKeyCode(int nKeyCode){
 		
 		completeText += SOUND_TABLE[nKeyCode];
 		ingWord = NULL;
-		//		completeText += SOUND_TABLE[nKeyCode];
-		
 		
 		m_nStatus = HS_FIRST;
 		return;
 		
 	} else {
-		
-		
-		
 		switch(m_nStatus)	{
 			case HS_FIRST:
 				// 초성
@@ -588,3 +595,5 @@ int HangulAutomata::DownGradeIngWordStatus(wchar_t word) {
 	
 	return HS_MIDDLE_STATE;
 }
+
+

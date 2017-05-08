@@ -1,5 +1,5 @@
 /*
- *  ofxSoftKey.h
+ *  ofxMultiLanguageSoftKey.h
  *  softKeyboardExample
  *
  *  Created by Jeffrey Crouse on 11/9/10.
@@ -28,53 +28,48 @@
 #include "ofxMSAInteractiveObject.h"
 #include "ofxTrueTypeFontUC.h"
 
+#define OFXVHK_LAYOUT_EN 1
+#define OFXVHK_LAYOUT_KR 2
+
 class ofApp;
-class ofxSoftKey : public ofxMSAInteractiveObject {
+class ofxMultiLanguageSoftKey : public ofxMSAInteractiveObject {
 public:
 	ofxTrueTypeFontUC *labelFont;
 	
 	bool isLastInRow;
+	bool isActivated;
 	int* padding;
 	
-//	ofxSoftKey(int key, ofBaseApp* ofApp);
-	ofxSoftKey(int key, string label, ofBaseApp* ofApp);
-	~ofxSoftKey();
+	ofxMultiLanguageSoftKey(int key, string _enLabel, string _krLabel, ofBaseApp* ofApp);
+	~ofxMultiLanguageSoftKey();
 
-	ofxSoftKey& setPadding(int top, int right, int bottom, int left);
-	ofxSoftKey& padLeft(int left);
-	ofxSoftKey& padRight(int right);
+	ofxMultiLanguageSoftKey& setPadding(int top, int right, int bottom, int left);
+	ofxMultiLanguageSoftKey& padLeft(int left);
+	ofxMultiLanguageSoftKey& padRight(int right);
 	
-	ofxSoftKey& setKey(const char key);
-	ofxSoftKey& setTextColor(ofColor c);
-	ofxSoftKey& setTextBGColor(ofColor c);
-	ofxSoftKey& setBorderColor(ofColor c);
-	ofxSoftKey& setHoverColor(ofColor c);
-	ofxSoftKey& setClickColor(ofColor c);
-	ofxSoftKey& setRoundness(float r);
+	ofxMultiLanguageSoftKey& setKey(const char key);
+	ofxMultiLanguageSoftKey& setTextColor(ofColor c);
+	ofxMultiLanguageSoftKey& setTextBGColor(ofColor c);
+	ofxMultiLanguageSoftKey& setBorderColor(ofColor c);
+	ofxMultiLanguageSoftKey& setHoverColor(ofColor c);
+	ofxMultiLanguageSoftKey& setClickColor(ofColor c);
+	ofxMultiLanguageSoftKey& setRoundness(float r);
 	
-	//void setup();
-	//void update();
-	void draw();
-	//void exit();
+	void draw(int _langState);
 	
-	//void onRollOver(int x, int y);
-	//void onRollOut();
-	//void onMouseMove(int x, int y);
-	//void onDragOver(int x, int y, int button);
-	//void onDragOutside(int x, int y, int button);
 	void onPress(int x, int y, int button);
 	void onRelease(int x, int y, int button);
 	void onReleaseOutside(int x, int y, int button);
-	//void keyPressed( int key );
-	//void keyReleased( int key );
-
+	
+	void setEnable(bool _isActivated);
+	void setDisable(bool _isActivated);
 protected:
 	
 	ofBaseApp* ofapp;
 	
 	int key;
-	string *label;
-	string *hangulLabel;
+	string *enLabel;
+	string *krLabel;
 	float roundness;
 	ofColor textColor, textBGColor, borderColor, hoverColor, clickColor;
 };

@@ -17,7 +17,7 @@ public:
 	~ofxHangulKeyboardPlus();
 	
 	void setup(ofBaseApp *_ofApp, bool hangulMode);
-	void update();
+	void setPosition(ofVec2f pos);
 	void draw();
 	void sendKey(int key);
 	void toggleKeyboard();
@@ -29,12 +29,9 @@ protected:
 	ofBaseApp	*ofApp;
 	bool isHangulMode;
 	
-	string tmpBuffer_kr;
-	string tmpBuffer_en;
 	string mergedBuffer;
 	
-	softHangulKeyboard *hangulKeyboard;
-	softHangulKeyboard *engKeyboard;
+	softHangulKeyboard *keyboard;
 	
 	ofVec2f position;
 	float lastKeyComboCheckTimer;
