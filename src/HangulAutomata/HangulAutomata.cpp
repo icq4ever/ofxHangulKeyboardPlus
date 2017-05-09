@@ -50,7 +50,7 @@ const wchar_t SOUND_TABLE[110] = {
 	L'?',							// 109
 };
 
-// 초성 합성 테이블
+// 초성 합성 테이블  - 사용되지 않는듯..
 const int MIXED_CHO_CONSON[5][3] = {
 	{ 0, 0, 1}, // ㄱ,ㄱ,ㄲ
 	{ 3, 3, 4}, // ㄷ,ㄷ,ㄸ
@@ -452,7 +452,7 @@ bool HangulAutomata::MixInitial(int nKeyCode) {
 			return true;
 		}
 	}
-	while(++i < );
+	while(++i < 5);
 	
 	return false;
 }
