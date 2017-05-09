@@ -68,6 +68,16 @@
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E850D7721EC26C8F00956CB2 /* ._.DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; path = ._.DS_Store; sourceTree = "<group>"; };
+		E850D7731EC26C8F00956CB2 /* ._utf8 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ._utf8; sourceTree = "<group>"; };
+		E850D7741EC26C8F00956CB2 /* ._utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ._utf8.h; sourceTree = "<group>"; };
+		E850D7761EC26C8F00956CB2 /* ._checked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ._checked.h; sourceTree = "<group>"; };
+		E850D7771EC26C8F00956CB2 /* ._core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ._core.h; sourceTree = "<group>"; };
+		E850D7781EC26C8F00956CB2 /* ._unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ._unchecked.h; sourceTree = "<group>"; };
+		E850D7791EC26C8F00956CB2 /* checked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checked.h; sourceTree = "<group>"; };
+		E850D77A1EC26C8F00956CB2 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
+		E850D77B1EC26C8F00956CB2 /* unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unchecked.h; sourceTree = "<group>"; };
+		E850D77C1EC26C8F00956CB2 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 		417BA46EC809BDCDB92E2FCF /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E850D7711EC26C8F00956CB2 /* utf8cpp */,
 				F471AC018FAB6AE98C280103 /* HangulAutomata */,
 				BE62602CA360EB4573DDEE6F /* MultiLanguageSoftKey */,
 				4C32ED82505046623E9147C1 /* ofxHangulKeyboardPlus.cpp */,
@@ -201,6 +212,31 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		E850D7711EC26C8F00956CB2 /* utf8cpp */ = {
+			isa = PBXGroup;
+			children = (
+				E850D7721EC26C8F00956CB2 /* ._.DS_Store */,
+				E850D7731EC26C8F00956CB2 /* ._utf8 */,
+				E850D7741EC26C8F00956CB2 /* ._utf8.h */,
+				E850D7751EC26C8F00956CB2 /* utf8 */,
+				E850D77C1EC26C8F00956CB2 /* utf8.h */,
+			);
+			path = utf8cpp;
+			sourceTree = "<group>";
+		};
+		E850D7751EC26C8F00956CB2 /* utf8 */ = {
+			isa = PBXGroup;
+			children = (
+				E850D7761EC26C8F00956CB2 /* ._checked.h */,
+				E850D7771EC26C8F00956CB2 /* ._core.h */,
+				E850D7781EC26C8F00956CB2 /* ._unchecked.h */,
+				E850D7791EC26C8F00956CB2 /* checked.h */,
+				E850D77A1EC26C8F00956CB2 /* core.h */,
+				E850D77B1EC26C8F00956CB2 /* unchecked.h */,
+			);
+			path = utf8;
 			sourceTree = "<group>";
 		};
 		F471AC018FAB6AE98C280103 /* HangulAutomata */ = {

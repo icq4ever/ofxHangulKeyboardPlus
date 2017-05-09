@@ -16,6 +16,7 @@
 #include "ofMain.h"
 #include "MultiLanguageSoftKey.h"
 #include "HangulAutomata.h"
+//#include <codecvt>
 #include "utf8cpp/utf8.h"
 
 
