@@ -16,7 +16,7 @@
 - [ofxTrueTypeFontUC](https://github.com/hironishihara/ofxTrueTypeFontUC)
 
 ## TODO
-- 가상키보드에서 쌍자음 및 대문자 입력
+- 가상키보드에서 ~~쌍자음~~대문자 입력
 - Shift키 및 capslock 키 구현 
 
 ## 라이센스
