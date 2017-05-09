@@ -3,7 +3,7 @@
 ![screenshot](ofxHangulKeyboardPlusScreenshot.png)
 
 오픈프레임웍스에서 동작하는 한글입력기입니다.<br/>
-- 키보드및 가상키보드 입력
+하드웨어 키보드입력및 가상키보드 입력을 지원합니다.
 
 ## 지원 환경
 - 맥OS Sierra 10.12.4 / 오픈프레임웍스 0.9.8
