@@ -16,7 +16,7 @@
 #include "ofMain.h"
 #include "MultiLanguageSoftKey.h"
 #include "HangulAutomata.h"
-
+#include "utf8cpp/utf8.h"
 
 
 //class ofApp;
@@ -64,7 +64,9 @@ public:
 	bool isGetActivated();
 	void clearBuffer();
 	void popFromBufferEnd();
-	
+	//string wstring_to_utf8(const wstring& str);	
+	inline void decode_utf8(const string& bytes, wstring& wstr)	{ 	utf8::utf8to32(bytes.begin(), bytes.end(), std::back_inserter(wstr));	}
+	inline void encode_utf8(const wstring& wstr, string& bytes)	{	bytes.clear(); utf8::utf32to8(wstr.begin(), wstr.end(), std::back_inserter(bytes));	}
 	
 protected:
 	ofBaseApp* ofapp;

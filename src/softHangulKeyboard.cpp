@@ -13,8 +13,10 @@
 
 #include "ofMain.h"
 #include "softHangulKeyboard.h"
-#include <codecvt>
+//#include <codecvt>
+//#include <boost/locale/encoding_utf.hpp>
 
+//using namespace boost::locale::conv::utf_to_utf;
 
 softHangulKeyboard::softHangulKeyboard() {
 	initializeHangulKeyMapTable();
@@ -258,8 +260,12 @@ void softHangulKeyboard::keyInput(int key) {
 
 
 	m_wstrText = automata.completeText + automata.ingWord;
-	std::wstring_convert<std::codecvt_utf8<wchar_t>,wchar_t> convert;
-	stringBuffer.assign(convert.to_bytes(m_wstrText));
+
+	//std::wstring_convert<std::codecvt_utf8<wchar_t>,wchar_t> convert;
+	//stringBuffer.assign(convert.to_bytes(m_wstrText));
+
+	//stringBuffer = wstring_to_utf8(m_wstrText);
+	encode_utf8(m_wstrText, stringBuffer);
 }
 
 
