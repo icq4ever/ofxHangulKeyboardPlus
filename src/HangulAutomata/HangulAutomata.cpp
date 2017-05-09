@@ -48,30 +48,15 @@ const wchar_t SOUND_TABLE[110] = {
 	L')', L'_', L'+', L'{', L'}',	//  99 - 103
 	L'|', L':', L'"', L'<', L'>',	// 104 - 108
 	L'?',							// 109
-	
-	
 };
 
-// 초성 합성 테이블  - 사용되지 않는듯..
+// 초성 합성 테이블
 const int MIXED_CHO_CONSON[5][3] = {
-	//	{ 0, 0,15}, // ㄱ,ㄱ,ㅋ
-	//	{15, 0, 1}, // ㅋ,ㄱ,ㄲ
-	{ 1, 0, 0}, // ㄲ,ㄱ,ㄱ
-	
-	//	{ 3, 3,16}, // ㄷ,ㄷ,ㅌ
-	//	{16, 3, 4}, // ㅌ,ㄷ,ㄸ
-	{ 4, 3, 3}, // ㄸ,ㄷ,ㄷ
-	
-	//	{ 7, 7,17}, // ㅂ,ㅂ,ㅍ
-	//	{17, 7, 8}, // ㅍ,ㅂ,ㅃ
-	{ 8, 7, 7}, // ㅃ,ㅂ,ㅂ
-	
-	//	{ 9, 9,10}, // ㅅ,ㅅ,ㅆ
-	{10, 9, 9}, // ㅆ,ㅅ,ㅅ
-	
-	//	{12,12,14}, // ㅈ,ㅈ,ㅊ
-	//	{14,12,13}, // ㅊ,ㅈ,ㅉ
-	{13,12,12}  // ㅉ,ㅈ,ㅈ
+	{ 0, 0, 1}, // ㄱ,ㄱ,ㄲ
+	{ 3, 3, 4}, // ㄷ,ㄷ,ㄸ
+	{ 7, 7, 8}, // ㅂ,ㅂ,ㅃ
+	{ 9, 9,10}, // ㅅ,ㅅ,ㅆ
+	{12,12,13}  // ㅈ,ㅈ,ㅉ
 };
 
 // 초성,중성 모음 합성 테이블
@@ -212,6 +197,7 @@ void HangulAutomata::SetKeyCode(int nKeyCode){
 		m_nStatus = HS_FIRST;
 		return;
 		
+	// 특수키, 숫자가 아니라면...
 	} else {
 		switch(m_nStatus)	{
 			case HS_FIRST:
@@ -237,21 +223,21 @@ void HangulAutomata::SetKeyCode(int nKeyCode){
 				}
 				break;
 				
-			case HS_FIRST_V:
+			case HS_FIRST_V: // 자음이 입력된 상태..
 				// 자음 + 모음
 				if(nKeyCode > 18){ 	// 자음 + 모음 상태
 					m_nPhonemez[1]	= nKeyCode;
 					m_nStatus		= HS_MIDDLE_STATE;
 				}
 				
-				else {				// 자음
+				else {				// 자음입력상태중 자음이 입력되면 ...
 					
-					//	if(!MixInitial(nKeyCode))
-					{
+//					if(MixInitial(nKeyCode) == false){
+					if(!MixInitial(nKeyCode)) {
 						m_completeWord	= SOUND_TABLE[m_nPhonemez[0]];
 						m_nPhonemez[0]	= nKeyCode;
 						m_nStatus		= HS_FIRST_V;
-					}
+					} 
 				}
 				break;
 				
@@ -466,7 +452,7 @@ bool HangulAutomata::MixInitial(int nKeyCode) {
 			return true;
 		}
 	}
-	while(++i < 5);
+	while(++i < );
 	
 	return false;
 }
