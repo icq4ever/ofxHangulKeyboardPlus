@@ -3,13 +3,16 @@
 ![screenshot](ofxHangulKeyboardPlusScreenshot.png)
 
 오픈프레임웍스에서 동작하는 한글입력기입니다.<br/>
-- 키보드및 가상키보드 입력
-- 맥OS Sierra 10.12.4 / 오픈프레임웍스 0.9.8에서 동작 테스트 확인 완료
-- 윈도우 지원 안됨.
+하드웨어 키보드입력및 가상키보드 입력을 지원합니다.
+
+## 지원 환경
+- 맥OS Sierra 10.12.4 / 오픈프레임웍스 0.9.8
+- 윈도우는 지원되지 않습니다.
 
 ## 참조한 공개된 소스
 - [한글-오토마타-만들기 by 맛있는님](http://codepedia.tistory.com/entry/%ED%95%9C%EA%B8%80-%EC%98%A4%ED%86%A0%EB%A7%88%ED%83%80-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 - [ofxSoftKeyboard](https://github.com/Lensley/ofxSoftKeyboard)
+- [utf8cpp](http://utfcpp.sourceforge.net/)
 
 ## 필요 애드온
 - [ofxMSAInteractiveObject](https://github.com/memo/ofxMSAInteractiveObject)
