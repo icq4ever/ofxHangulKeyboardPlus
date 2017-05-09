@@ -69,7 +69,7 @@ void softHangulKeyboard::setLayout(int layout) {
 	addKey(OFXSK_KEY_CAPS, "capslock", "capslock"); addKey('a', "a", "ㅁ"); addKey('s', "s", "ㄴ"); addKey('d', "d", "ㅇ"); addKey('f', "f", "ㄹ"); addKey('g', "g", "ㅎ"); addKey('h', "h", "ㅗ"); addKey('j', "j", "ㅓ"); addKey('k', "k", "ㅏ"); addKey('l', "l", "ㅣ"); addKey(';', ";", ";"); addKey('\'', "\'", "\'"); addKey(OFXSK_KEY_RETURN, "return", "return"); newRow();
 	
 	// 4th line
-	addKey(OFXSK_KEY_SHIFT, "shift", "shift"); addKey('z', "z", "ㅋ"); addKey('x', "x", "ㅋ"); addKey('c', "c", "ㅊ"); addKey('v', "v", "ㅍ"); addKey('b', "b", "ㅠ"); addKey('n', "n", "ㅜ"); addKey('m', "m", "ㅡ"); addKey(',', ",", ","); addKey('.', ".", "."); addKey('/', "/", "/"); addKey(OFXSK_KEY_SHIFT, "shift", "shift"); newRow();
+	addKey(OFXSK_KEY_SHIFT, "shift", "shift"); addKey('z', "z", "ㅋ"); addKey('x', "x", "ㅌ"); addKey('c', "c", "ㅊ"); addKey('v', "v", "ㅍ"); addKey('b', "b", "ㅠ"); addKey('n', "n", "ㅜ"); addKey('m', "m", "ㅡ"); addKey(',', ",", ","); addKey('.', ".", "."); addKey('/', "/", "/"); addKey(OFXSK_KEY_SHIFT, "shift", "shift"); newRow();
 	
 	// 5th line
 	addKey(' ', " ", " ").padLeft(200).setSize(300, 40), addKey(OFXSK_KEY_LANG, "KR/EN", "한/영").setSize(65, 40);
