@@ -16,7 +16,7 @@ Thumbs.db
 bin/libs/*
 obj/linuxarmv61/*
 obj/*
-
+bin/*
 
 #macOS
 *.app/
