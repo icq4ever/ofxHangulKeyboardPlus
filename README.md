@@ -15,6 +15,10 @@
 - [ofxMSAInteractiveObject](https://github.com/memo/ofxMSAInteractiveObject)
 - [ofxTrueTypeFontUC](https://github.com/hironishihara/ofxTrueTypeFontUC)
 
+## bug fixed 
+- 가상키보드에서 쌍자음 입력가능. : 자음 연속 입력
+- 키보드 한글키 ㅌ 수정 
+
 ## TODO
 - 가상키보드에서 ~~쌍자음~~대문자 입력
 - Shift키 및 capslock 키 구현 
