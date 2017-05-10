@@ -7,6 +7,7 @@
 
 ## 지원 환경
 - 맥OS Sierra 10.12.4 / 오픈프레임웍스 0.9.8
+- 라즈베리파이 / raspbian armv6 / 오픈프레임웍스 0.9.8
 - 윈도우는 지원되지 않습니다.
 
 ## 참조한 공개된 소스
@@ -18,9 +19,10 @@
 - [ofxMSAInteractiveObject](https://github.com/memo/ofxMSAInteractiveObject)
 - [ofxTrueTypeFontUC](https://github.com/hironishihara/ofxTrueTypeFontUC)
 
-## bug fixed 
+## change logs (bug fixed)
 - 가상키보드에서 쌍자음 입력가능. : 자음 연속 입력
 - 키보드 한글키 ㅌ 수정 
+- wstring-> string 변환시 codecvt 제거(gcc4.6에서 미지원), utf8cpp사용
 
 ## TODO
 - 가상키보드에서 ~~쌍자음~~대문자 입력
